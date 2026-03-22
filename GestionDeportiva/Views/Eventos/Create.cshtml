@@ -1,0 +1,164 @@
+﻿@model GestionDeportiva.Models.Evento
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Object deportes = ViewBag.deportes;
+    Object sedesFutbol = ViewBag.sedesFutbol;
+    Object sedesBaseball = ViewBag.sedesBaseball;
+    Object sedesBasketball = ViewBag.sedesBasketball;
+    Object sedesFutbolAmericano = ViewBag.sedesFutbolAmericano;
+    Object equiposFutbol = ViewBag.equiposFutbol;
+    Object equiposBaseball = ViewBag.equiposBaseball;
+    Object equiposBasketball = ViewBag.equiposBasketball;
+    Object equiposFutbolAmericano = ViewBag.equiposFutbolAmericano;
+}
+
+<h2>Creacion de eventos</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(x => x.Tipo, (IEnumerable<SelectListItem>)deportes, "Seleccione deporte")
+            @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group" id="Equipos" style="display:none;">
+
+    </div>
+    <div class="form-group" id="EquiposFutbol" style="display:none;">
+        @Html.Label("Equipos a enfrentarse", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(x => x.Equipo1, (IEnumerable<SelectListItem>)equiposFutbol, "Seleccione equipo 1")
+            @Html.DropDownListFor(x => x.Equipo2, (IEnumerable<SelectListItem>)equiposFutbol, "Seleccione equipo 2")
+            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group" id="EquiposBaseball" style="display:none;">
+        @Html.Label("Equipos a enfrentarse", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(x => x.Equipo1, (IEnumerable<SelectListItem>)equiposBaseball, "Seleccione equipo 1")
+            @Html.DropDownListFor(x => x.Equipo2, (IEnumerable<SelectListItem>)equiposBaseball, "Seleccione equipo 2")
+            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group" id="EquiposBasketball" style="display:none;">
+        @Html.Label("Equipos a enfrentarse", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(x => x.Equipo1, (IEnumerable<SelectListItem>)equiposBasketball, "Seleccione equipo 1")
+            @Html.DropDownListFor(x => x.Equipo2, (IEnumerable<SelectListItem>)equiposBasketball, "Seleccione equipo 2")
+            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group" id="EquiposFutbolAmericano" style="display:none;">
+        @Html.Label("Equipos a enfrentarse", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(x => x.Equipo1, (IEnumerable<SelectListItem>)equiposFutbolAmericano, "Seleccione equipo 1")
+            @Html.DropDownListFor(x => x.Equipo2, (IEnumerable<SelectListItem>)equiposFutbolAmericano, "Seleccione equipo 2")
+            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input id="Fecha" name="Fecha" asp-for="StartDate" type="date" class="form-control" />
+            @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Hora, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input id="Hora" name="Hora" asp-for="StartDate" type="time" class="form-control" />
+            @Html.ValidationMessageFor(model => model.Hora, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" id="Sedes" style="display:none;">
+
+    </div>
+
+    <div class="form-group" id="SedesFutbol" style="display:none;">
+        @Html.LabelFor(model => model.Lugar, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(x => x.Lugar, (IEnumerable<SelectListItem>)sedesFutbol, "Seleccione sede")
+            @Html.ValidationMessageFor(model => model.Lugar, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" id="SedesFutbolAmericano" style="display:none;">
+        @Html.LabelFor(model => model.Lugar, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(x => x.Lugar, (IEnumerable<SelectListItem>)sedesFutbolAmericano, "Seleccione sede")
+            @Html.ValidationMessageFor(model => model.Lugar, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" id="SedesBasketball" style="display:none;">
+        @Html.LabelFor(model => model.Lugar, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(x => x.Lugar, (IEnumerable<SelectListItem>)sedesBasketball, "Seleccione sede")
+            @Html.ValidationMessageFor(model => model.Lugar, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group" id="SedesBaseball" style="display:none;">
+        @Html.LabelFor(model => model.Lugar, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(x => x.Lugar, (IEnumerable<SelectListItem>)sedesBaseball, "Seleccione sede")
+            @Html.ValidationMessageFor(model => model.Lugar, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Crear" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Volver a Lista de Eventos", "Index")
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script type="text/javascript">
+
+    $(function () {
+        $("#Tipo").change(function () {
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val().replace(" ", "");
+
+
+            $("#Sedes").find("div:first-child").remove();
+
+            $("div[id=Sedes" + selectedValue + "]").clone().appendTo("#Sedes");
+            $("div[id=Sedes]").css("display", "block");
+            $("#Sedes").find("div:first-child").css("display", "block");
+
+
+            $("#Equipos").find("div:first-child").remove();
+            $("#Equipos").find("div:nth-child(2)").remove();
+
+            $("div[id=Equipos" + selectedValue + "]").clone().appendTo("#Equipos");
+            $("div[id=Equipos]").css("display", "block");
+            $("#Equipos").find("div:first-child").css("display", "block");
+            $("#Equipos").find("div:nth-child(2)").css("display", "block");
+
+        });
+    });
+
+
+</script>
+}

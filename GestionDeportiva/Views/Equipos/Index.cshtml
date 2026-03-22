@@ -1,0 +1,40 @@
+﻿@model IEnumerable<GestionDeportiva.Models.Equipos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Equipos</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo registro", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EquipoNombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deporte.DeporteNombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EquipoNombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Deporte.DeporteNombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.EquipoId }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.EquipoId }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.EquipoId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,35 @@
+﻿@model GestionDeportiva.Models.Equipos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Equipos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EquipoNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EquipoNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deporte.DeporteNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deporte.DeporteNombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.EquipoId }) |
+    @Html.ActionLink("Volver", "Index")
+</p>
